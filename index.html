@@ -13,6 +13,7 @@
 <body>
 
 <!-- ===== Folder-tab navigation ===== -->
+<div class="scroll-tape" id="scrollTape" aria-hidden="true"></div>
 <header class="site-header">
   <div class="header-inner">
     <a href="#top" class="brand">
@@ -24,12 +25,12 @@
         <span></span><span></span><span></span>
       </button>
       <ul id="tabList">
-        <li><a href="#about" class="tab">About</a></li>
-        <li><a href="#experience" class="tab">Experience</a></li>
-        <li><a href="#skills" class="tab">Skills</a></li>
-        <li><a href="#projects" class="tab">Projects</a></li>
-        <li><a href="#certificates" class="tab">Certificates</a></li>
-        <li><a href="#contact" class="tab tab-accent">Request a Copy</a></li>
+        <li><a href="#about" class="tab" data-section="about">About</a></li>
+        <li><a href="#experience" class="tab" data-section="experience">Experience</a></li>
+        <li><a href="#skills" class="tab" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="tab" data-section="projects">Projects</a></li>
+        <li><a href="#certificates" class="tab" data-section="certificates">Certificates</a></li>
+        <li><a href="#contact" class="tab tab-accent" data-section="contact">Request a Copy</a></li>
       </ul>
     </nav>
   </div>
@@ -40,7 +41,13 @@
   <!-- ===== HERO — the catalog card ===== -->
   <section class="hero" id="home">
     <div class="hero-inner">
-      <div class="catalog-card">
+      <div class="card-stack">
+        <div class="stack-card stack-card-2" aria-hidden="true"></div>
+        <div class="stack-card stack-card-1" aria-hidden="true"></div>
+        <div class="catalog-card">
+        <div class="approval-stamp" aria-hidden="true">
+          <span>Verified<br>Record</span>
+        </div>
         <div class="catalog-card-top">
           <span class="mono-label">CATALOG NO.</span>
           <span class="mono-value">BSIS&nbsp;—&nbsp;2026&nbsp;—&nbsp;001</span>
@@ -54,7 +61,7 @@
             at Caraga State University's Records Management Office.</p>
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary">Get in touch</a>
-            <a href="assetsBULAC, SAMANTHA_CV.docx.pdf" class="btn btn-ghost" download>Download CV</a>
+            <a href="assets/BULAC, SAMANTHA_CV.docx.pdf" class="btn btn-ghost" download>Download CV</a>
           </div>
         </div>
         <div class="catalog-card-footer">
@@ -69,6 +76,7 @@
         </div>
         <div class="punch-hole" aria-hidden="true"></div>
         <div class="punch-hole punch-hole-2" aria-hidden="true"></div>
+        </div>
       </div>
       <div class="hero-photo-frame">
         <img src="assets/bulac_filipiniana.jpg" alt="Portrait of Samantha P. Bulac" class="hero-photo" onerror="this.parentElement.classList.add('no-photo')">
@@ -78,7 +86,7 @@
   </section>
 
   <!-- ===== ABOUT ===== -->
-  <section class="section" id="about">
+  <section class="section" id="about" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 01</span></div>
       <h2 class="section-title">About</h2>
@@ -126,12 +134,12 @@
   </section>
 
   <!-- ===== EXPERIENCE ===== -->
-  <section class="section section-alt" id="experience">
+  <section class="section section-alt" id="experience" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 02</span></div>
       <h2 class="section-title">Experience</h2>
 
-      <article class="experience-card">
+      <article class="experience-card" data-reveal>
         <header class="experience-header">
           <div>
             <h3>Records Management Intern (OJT)</h3>
@@ -154,7 +162,7 @@
   </section>
 
   <!-- ===== SKILLS ===== -->
-  <section class="section" id="skills">
+  <section class="section" id="skills" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 03</span></div>
       <h2 class="section-title">Skills</h2>
@@ -194,7 +202,7 @@
   </section>
 
   <!-- ===== PROJECTS ===== -->
-  <section class="section section-alt" id="projects">
+  <section class="section section-alt" id="projects" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 04</span></div>
       <h2 class="section-title">Projects</h2>
@@ -223,7 +231,7 @@
   </section>
 
   <!-- ===== CERTIFICATES ===== -->
-  <section class="section" id="certificates">
+  <section class="section" id="certificates" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 05</span></div>
       <h2 class="section-title">Certificates</h2>
@@ -237,14 +245,14 @@
   </section>
 
   <!-- ===== CONTACT — the request slip ===== -->
-  <section class="section section-contact" id="contact">
+  <section class="section section-contact" id="contact" data-reveal>
     <div class="section-inner">
       <div class="folder-tab-label"><span>Folder 06</span></div>
       <h2 class="section-title">Request a Copy</h2>
       <p class="contact-intro">Interested in working together, or just want to say hello? Fill out a request
         slip below — it'll open directly in your email client.</p>
 
-      <form class="request-slip" id="requestSlip">
+      <form class="request-slip" id="requestSlip" data-reveal>
         <div class="slip-row">
           <span class="mono-label">REQUEST SLIP</span>
           <span class="mono-label">NO. <span id="slipNumber">000</span></span>
@@ -265,9 +273,10 @@
           <textarea name="message" rows="4" required placeholder="e.g. Job opportunity, collaboration, question about my work..."></textarea>
         </label>
 
-        <button type="submit" class="btn btn-primary stamp-btn">
+        <button type="submit" class="btn btn-primary stamp-btn" id="slipSubmitBtn">
           <span class="stamp-btn-text">Submit Request</span>
         </button>
+        <p class="slip-approved" id="slipApproved"><span class="badge">Approved</span> Opening your email client…</p>
       </form>
 
       <div class="contact-direct">
